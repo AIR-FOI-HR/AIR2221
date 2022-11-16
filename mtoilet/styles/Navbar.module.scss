@@ -1,0 +1,30 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  border-radius: 0 0 30px 30px;
+  background-color: #ffffff;
+  margin: 25px auto 25px auto;
+  width: 40%;
+  height: 55px;
+  overflow: hidden;
+
+  border: double 3.5px transparent;
+  background-image: linear-gradient(white, white),
+    linear-gradient(to right, #fb37ff, white, #18b2de);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+
+.navbar_a {
+  width: 80%;
+  padding: 9px 30px;
+  text-align: center;
+  font-size: 25px;
+  font-weight: 600;
+  transition: 0.3s;
+  &:hover {
+    background: #c9c9c9;
+  }
+}
