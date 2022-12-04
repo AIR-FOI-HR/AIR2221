@@ -1,9 +1,9 @@
 import { useLoadScript } from "@react-google-maps/api";
-import Map from "./Map";
+import Map from "../pages/Map";
 
 export default function MapLoader() {
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: "AIzaSyDEOpUR139wqi5ibVHyqCCLMMjYHdWybSU",
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!,
     libraries: ["places"],
   });
 

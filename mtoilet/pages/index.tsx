@@ -7,7 +7,6 @@ import styles from "../styles/Navbar.module.css";
 export default function Home() {
   return (
     <div>
-      <Navbar />
       <MapLoader />
     </div>
   );

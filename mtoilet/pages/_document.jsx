@@ -10,6 +10,12 @@ export default function Document() {
           href="https://fonts.googleapis.com/css2?family=Nunito&display=swap"
           rel="stylesheet"
         />
+        <script
+          async
+          defer
+          src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`}
+          type="text/javascript"
+        ></script>
       </Head>
       <body>
         <Main />
