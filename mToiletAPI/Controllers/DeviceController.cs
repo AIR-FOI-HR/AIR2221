@@ -7,11 +7,11 @@ using mToiletAPI.Services;
 namespace mToiletAPI.Controllers
 {
     [ApiController]
-    public class UserController : ControllerBase
+    public class DeviceController : ControllerBase
     {
-        private readonly UserService _context;
+        private readonly DeviceService _context;
 
-        public UserController(UserService context)
+        public DeviceController(DeviceService context)
         {
             _context = context;
         }
@@ -19,23 +19,23 @@ namespace mToiletAPI.Controllers
 
 
         [HttpGet]
-        [Route("api/users")]
-        public ActionResult<User> Get()
+        [Route("api/devices")]
+        public ActionResult<Device> Get()
         {
-            var data = _context.GetAllUsers();
+            var data = _context.GetAllDevices();
             return Ok(data);
         }
 
 
 
         [HttpGet]
-        [Route("api/users/{id}")]
-        public ActionResult<User> Get([FromRoute] int id)
+        [Route("api/devices/{id}")]
+        public ActionResult<Device> Get([FromRoute] int id)
         {
             try
             {
-                var user = _context.GetUserById(id);
-                return Ok(user);
+                var device = _context.GetDeviceById(id);
+                return Ok(device);
             }
             catch (Exception ex)
             {
@@ -46,13 +46,13 @@ namespace mToiletAPI.Controllers
 
 
         [HttpPost]
-        [Route("api/users")]
-        public ActionResult<User> Create([FromBody] User dto)
+        [Route("api/devices")]
+        public ActionResult<Device> Create([FromBody] Device dto)
         {
             try
             {
-                var user = _context.CreateUser(dto);
-                return Ok(user);
+                var device = _context.CreateDevice(dto);
+                return Ok(device);
             }
             catch (Exception ex)
             {
@@ -63,12 +63,12 @@ namespace mToiletAPI.Controllers
 
 
         [HttpPut]
-        [Route("api/users/{id}")]
-        public ActionResult<User> Put([FromRoute] int id, [FromBody] User dto)
+        [Route("api/devices/{id}")]
+        public ActionResult<Device> Put([FromRoute] int id, [FromBody] Device dto)
         {
             try
             {
-                _context.SaveUserById(id, dto);
+                _context.SaveDeviceById(id, dto);
                 return Ok();
             }
             catch (Exception ex)
@@ -80,10 +80,10 @@ namespace mToiletAPI.Controllers
 
 
         [HttpDelete]
-        [Route("api/users/{id}")]
-        public ActionResult<User> Delete([FromRoute] int id)
+        [Route("api/devices/{id}")]
+        public ActionResult<Device> Delete([FromRoute] int id)
         {
-            _context.DeleteUser(id);
+            _context.DeleteDevice(id);
             return Ok();
         }
     }
