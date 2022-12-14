@@ -112,7 +112,7 @@ namespace mToiletAPI.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("mToiletAPI.Models.Entities.Event", b =>

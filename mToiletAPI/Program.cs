@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using mToiletAPI.Persistence;
+using mToiletAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("mToilet_db")
     ));
+
+builder.Services.AddScoped<UserService>();
 
 var app = builder.Build();
 
