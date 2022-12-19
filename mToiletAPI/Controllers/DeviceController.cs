@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using mToiletAPI.Models.Dtos.Requests;
 using mToiletAPI.Models.Entities;
 using mToiletAPI.Services;
 
@@ -47,7 +48,7 @@ namespace mToiletAPI.Controllers
 
         [HttpPost]
         [Route("api/devices")]
-        public ActionResult<Device> Create([FromBody] Device dto)
+        public IActionResult Create([FromBody] DeviceCreateRequest dto)
         {
             try
             {

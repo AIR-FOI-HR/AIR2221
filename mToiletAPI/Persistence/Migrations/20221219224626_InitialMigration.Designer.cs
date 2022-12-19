@@ -12,8 +12,8 @@ using mToiletAPI.Persistence;
 namespace mToiletAPI.Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221214212050_InitialDatabase")]
-    partial class InitialDatabase
+    [Migration("20221219224626_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

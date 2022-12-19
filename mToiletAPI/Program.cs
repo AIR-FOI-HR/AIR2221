@@ -17,6 +17,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<DeviceService>();
+builder.Services.AddScoped<EventService>();
 
 var app = builder.Build();
 

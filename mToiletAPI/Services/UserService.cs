@@ -1,4 +1,5 @@
-﻿using mToiletAPI.Models.Entities;
+﻿using mToiletAPI.Models.Dtos.Requests;
+using mToiletAPI.Models.Entities;
 using mToiletAPI.Persistence;
 
 namespace mToiletAPI.Services
@@ -38,10 +39,9 @@ namespace mToiletAPI.Services
 
 
 
-        public User CreateUser(User user)
+        public User CreateUser(UserRequest user)
         {
             var entity = new User();
-            entity.Id = user.Id;
             entity.Username = user.Username;
             entity.Password = user.Password;
             entity.Gender = user.Gender;

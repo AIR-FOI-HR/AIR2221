@@ -1,4 +1,5 @@
-﻿using mToiletAPI.Models.Entities;
+﻿using mToiletAPI.Models.Dtos.Requests;
+using mToiletAPI.Models.Entities;
 using mToiletAPI.Persistence;
 
 namespace mToiletAPI.Services
@@ -38,14 +39,13 @@ namespace mToiletAPI.Services
 
 
 
-        public Device CreateDevice(Device device)
+        public Device CreateDevice(DeviceCreateRequest device)
         {
             var entity = new Device();
-            entity.Id = device.Id;
             entity.DeviceName = device.DeviceName;
             entity.Latitude = device.Latitude;
             entity.Longitude = device.Longitude;
-            entity.LastSync= device.LastSync;
+            entity.LastSync = DateTime.UtcNow;
 
             _context.Devices.Add(entity);
             _context.SaveChanges();
