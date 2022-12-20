@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using mToiletAPI.Models.Dtos.Requests;
 using mToiletAPI.Models.Dtos.Responses;
 using mToiletAPI.Models.Entities;
 using mToiletAPI.Persistence;
@@ -31,11 +32,10 @@ namespace mToiletAPI.Services
             return list;
         }
 
-        public Event CreateEvent(EventResponse events)
+        public Event CreateEvent(EventCreateRequest events)
         {
             var entity = new Event();
-            entity.Id = events.Id;
-            entity.Date = DateTime.Now;
+            entity.Date = DateTime.UtcNow;
             entity.UserId = events.UserId;
             entity.DeviceId = events.DeviceId;
 

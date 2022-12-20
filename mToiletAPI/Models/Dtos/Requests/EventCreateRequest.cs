@@ -1,6 +1,6 @@
 ﻿namespace mToiletAPI.Models.Dtos.Requests
 {
-    public class EventRequest
+    public class EventCreateRequest
     {
         public int UserId { get; set; }
         public int DeviceId { get; set; }

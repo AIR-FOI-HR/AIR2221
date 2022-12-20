@@ -39,7 +39,7 @@ namespace mToiletAPI.Services
 
 
 
-        public User CreateUser(UserRequest user)
+        public User CreateUser(UserCreateRequest user)
         {
             var entity = new User();
             entity.Username = user.Username;
@@ -54,7 +54,7 @@ namespace mToiletAPI.Services
 
 
 
-        public void SaveUserById(int id, User user)
+        public void SaveUserById(int id, UserCreateRequest user)
         {
             var entityUser = _context.Users.Where(x => x.Id == id).FirstOrDefault();
 

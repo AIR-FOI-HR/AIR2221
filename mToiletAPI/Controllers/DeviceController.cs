@@ -65,7 +65,7 @@ namespace mToiletAPI.Controllers
 
         [HttpPut]
         [Route("api/devices/{id}")]
-        public ActionResult<Device> Put([FromRoute] int id, [FromBody] Device dto)
+        public ActionResult<Device> Put([FromRoute] int id, [FromBody] DeviceCreateRequest dto)
         {
             try
             {

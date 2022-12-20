@@ -12,7 +12,7 @@ using mToiletAPI.Persistence;
 namespace mToiletAPI.Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221219224626_InitialMigration")]
+    [Migration("20221220210958_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -37,7 +37,7 @@ namespace mToiletAPI.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("LastSync")
+                    b.Property<DateTime?>("LastSync")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<double>("Latitude")
@@ -85,8 +85,8 @@ namespace mToiletAPI.Persistence.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("price")
-                        .HasColumnType("integer");
+                    b.Property<double>("Price")
+                        .HasColumnType("double precision");
 
                     b.HasKey("Id");
 

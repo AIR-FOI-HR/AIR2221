@@ -45,7 +45,6 @@ namespace mToiletAPI.Services
             entity.DeviceName = device.DeviceName;
             entity.Latitude = device.Latitude;
             entity.Longitude = device.Longitude;
-            entity.LastSync = DateTime.UtcNow;
 
             _context.Devices.Add(entity);
             _context.SaveChanges();
@@ -55,7 +54,7 @@ namespace mToiletAPI.Services
 
 
 
-        public void SaveDeviceById(int id, Device device)
+        public void SaveDeviceById(int id, DeviceCreateRequest device)
         {
             var entityDevice = _context.Devices.Where(x => x.Id == id).FirstOrDefault();
 
@@ -67,7 +66,6 @@ namespace mToiletAPI.Services
             entityDevice.DeviceName = device.DeviceName;
             entityDevice.Latitude = device.Latitude;
             entityDevice.Longitude = device.Longitude;
-            entityDevice.LastSync= device.LastSync;
 
             _context.Update(entityDevice);
             _context.SaveChanges();

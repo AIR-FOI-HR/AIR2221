@@ -3,6 +3,6 @@
     public class QRCode
     {
         public int Id { get; set; }
-        public int price { get; set; }
+        public double Price { get; set; }
     }
 }

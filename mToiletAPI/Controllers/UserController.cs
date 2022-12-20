@@ -48,7 +48,7 @@ namespace mToiletAPI.Controllers
 
         [HttpPost]
         [Route("api/users")]
-        public IActionResult Create([FromBody] UserRequest dto)
+        public IActionResult Create([FromBody] UserCreateRequest dto)
         {
             try
             {
@@ -65,7 +65,7 @@ namespace mToiletAPI.Controllers
 
         [HttpPut]
         [Route("api/users/{id}")]
-        public ActionResult<User> Put([FromRoute] int id, [FromBody] User dto)
+        public IActionResult Put([FromRoute] int id, [FromBody] UserCreateRequest dto)
         {
             try
             {

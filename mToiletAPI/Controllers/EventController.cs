@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using mToiletAPI.Models.Dtos.Requests;
 using mToiletAPI.Models.Dtos.Responses;
 using mToiletAPI.Models.Entities;
 using mToiletAPI.Services;
@@ -17,6 +18,7 @@ namespace mToiletAPI.Controllers
             _context= context;
         }
 
+
         [HttpGet]
         [Route("api/events")]
         public IActionResult Get()
@@ -25,9 +27,10 @@ namespace mToiletAPI.Controllers
             return Ok(data);
         }
 
+
         [HttpPost]
         [Route("api/events")]
-        public ActionResult<Event> Create([FromBody] EventResponse dto)
+        public ActionResult<Event> Create([FromBody] EventCreateRequest dto)
         {
             try
             {

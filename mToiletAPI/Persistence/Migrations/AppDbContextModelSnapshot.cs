@@ -34,7 +34,7 @@ namespace mToiletAPI.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("LastSync")
+                    b.Property<DateTime?>("LastSync")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<double>("Latitude")
@@ -82,8 +82,8 @@ namespace mToiletAPI.Persistence.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("price")
-                        .HasColumnType("integer");
+                    b.Property<double>("Price")
+                        .HasColumnType("double precision");
 
                     b.HasKey("Id");
 
