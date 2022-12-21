@@ -45,6 +45,7 @@ namespace mToiletAPI.Services
             entity.DeviceName = device.DeviceName;
             entity.Latitude = device.Latitude;
             entity.Longitude = device.Longitude;
+            entity.LastSync = null;
 
             _context.Devices.Add(entity);
             _context.SaveChanges();
@@ -81,6 +82,22 @@ namespace mToiletAPI.Services
                 _context.Devices.Remove(device);
                 _context.SaveChanges();
             }
+        }
+
+
+        public void UpdateDeviceLastSync(int id)
+        {
+            var entityDevice = _context.Devices.Where(x => x.Id == id).FirstOrDefault();
+
+            if (entityDevice == null)
+            {
+                throw new ArgumentNullException("Device was not found");
+            }
+
+            entityDevice.LastSync = DateTime.UtcNow;
+
+            _context.Update(entityDevice);
+            _context.SaveChanges();
         }
     }
 }

@@ -18,6 +18,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<DeviceService>();
 builder.Services.AddScoped<EventService>();
+builder.Services.AddScoped<QRCodeService>();
 
 var app = builder.Build();
 

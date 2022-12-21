@@ -27,6 +27,35 @@ namespace mToiletAPI.Controllers
             return Ok(data);
         }
 
+        [HttpGet]
+        [Route("api/events/user_id/{id}")]
+        public ActionResult<EventCreateRequest> GetUsers([FromRoute] int id)
+        {
+            try
+            {
+                var user = _context.GetEventByUser(id);
+                return Ok(user);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("api/events/device_id/{id}")]
+        public ActionResult<EventCreateRequest> GetDevices([FromRoute] int id)
+        {
+            try
+            {
+                var user = _context.GetEventByDevice(id);
+                return Ok(user);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
         [HttpPost]
         [Route("api/events")]

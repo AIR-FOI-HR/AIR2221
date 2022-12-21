@@ -32,6 +32,44 @@ namespace mToiletAPI.Services
             return list;
         }
 
+        public List<EventResponse> GetEventByUser(int eventByUser)
+        {
+            var selectedList = _context.Events.Where(x => x.UserId == eventByUser).ToList();
+
+            List<EventResponse> list = new List<EventResponse>();
+
+            foreach (var item in selectedList)
+            {
+                EventResponse entity = new EventResponse();
+                entity.Id = item.Id;
+                entity.UserId = item.UserId;
+                entity.DeviceId = item.DeviceId;
+                entity.Date = item.Date;
+
+                list.Add(entity);
+            }
+            return list;
+        }
+
+        public List<EventResponse> GetEventByDevice(int eventByDevice)
+        {
+            var selectedList = _context.Events.Where(x => x.DeviceId == eventByDevice).ToList();
+
+            List<EventResponse> list = new List<EventResponse>();
+
+            foreach (var item in selectedList)
+            {
+                EventResponse entity = new EventResponse();
+                entity.Id = item.Id;
+                entity.UserId = item.UserId;
+                entity.DeviceId = item.DeviceId;
+                entity.Date = item.Date;
+
+                list.Add(entity);
+            }
+            return list;
+        }
+
         public Event CreateEvent(EventCreateRequest events)
         {
             var entity = new Event();

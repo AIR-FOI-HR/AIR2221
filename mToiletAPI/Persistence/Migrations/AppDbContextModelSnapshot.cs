@@ -26,44 +26,53 @@ namespace mToiletAPI.Persistence.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("DeviceName")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("device_name");
 
                     b.Property<DateTime?>("LastSync")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("last_sync");
 
                     b.Property<double>("Latitude")
-                        .HasColumnType("double precision");
+                        .HasColumnType("double precision")
+                        .HasColumnName("latitude");
 
                     b.Property<double>("Longitude")
-                        .HasColumnType("double precision");
+                        .HasColumnType("double precision")
+                        .HasColumnName("longitude");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Devices");
+                    b.ToTable("devices", (string)null);
                 });
 
             modelBuilder.Entity("mToiletAPI.Models.Entities.Event", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("Date")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("date");
 
                     b.Property<int>("DeviceId")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("device_id");
 
                     b.Property<int>("UserId")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("user_id");
 
                     b.HasKey("Id");
 
@@ -71,48 +80,54 @@ namespace mToiletAPI.Persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Events");
+                    b.ToTable("events", (string)null);
                 });
 
             modelBuilder.Entity("mToiletAPI.Models.Entities.QRCode", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<double>("Price")
-                        .HasColumnType("double precision");
+                        .HasColumnType("double precision")
+                        .HasColumnName("price");
 
                     b.HasKey("Id");
 
-                    b.ToTable("QRCodes");
+                    b.ToTable("qrcodes", (string)null);
                 });
 
             modelBuilder.Entity("mToiletAPI.Models.Entities.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Gender")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("gender");
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("password");
 
                     b.Property<string>("Username")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("username");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("users", (string)null);
                 });
 
             modelBuilder.Entity("mToiletAPI.Models.Entities.Event", b =>

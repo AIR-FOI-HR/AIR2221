@@ -87,5 +87,21 @@ namespace mToiletAPI.Controllers
             _context.DeleteDevice(id);
             return Ok();
         }
+
+
+        [HttpPut]
+        [Route("api/devicesLastSync/{id}")]
+        public ActionResult<Device> Put([FromRoute] int id)
+        {
+            try
+            {
+                _context.UpdateDeviceLastSync(id);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }
