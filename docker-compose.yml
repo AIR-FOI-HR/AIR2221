@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  mtoiletapi:
+    image: ${DOCKER_REGISTRY-}mtoiletapi
+    build:
+      context: .
+      dockerfile: mToiletAPI/Dockerfile

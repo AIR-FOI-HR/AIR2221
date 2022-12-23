@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mToiletAPI", "mToiletAPI\mToiletAPI.csproj", "{03E9D543-67AA-4341-9FD3-E78A06436431}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mToiletAPI", "mToiletAPI\mToiletAPI.csproj", "{03E9D543-67AA-4341-9FD3-E78A06436431}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{65A4F79A-01B6-46FC-9FE5-61EFCB066A55}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{03E9D543-67AA-4341-9FD3-E78A06436431}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03E9D543-67AA-4341-9FD3-E78A06436431}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03E9D543-67AA-4341-9FD3-E78A06436431}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65A4F79A-01B6-46FC-9FE5-61EFCB066A55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65A4F79A-01B6-46FC-9FE5-61EFCB066A55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65A4F79A-01B6-46FC-9FE5-61EFCB066A55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65A4F79A-01B6-46FC-9FE5-61EFCB066A55}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
