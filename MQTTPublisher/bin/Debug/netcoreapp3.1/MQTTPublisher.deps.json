@@ -1,0 +1,76 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "MQTTPublisher/1.0.0": {
+        "dependencies": {
+          "MQTTnet": "4.1.4.563",
+          "MQTTnet.Extensions.ManagedClient": "4.1.4.563",
+          "Newtonsoft.Json": "13.0.2"
+        },
+        "runtime": {
+          "MQTTPublisher.dll": {}
+        }
+      },
+      "MQTTnet/4.1.4.563": {
+        "runtime": {
+          "lib/netcoreapp3.1/MQTTnet.dll": {
+            "assemblyVersion": "4.1.4.563",
+            "fileVersion": "4.1.4.563"
+          }
+        }
+      },
+      "MQTTnet.Extensions.ManagedClient/4.1.4.563": {
+        "dependencies": {
+          "MQTTnet": "4.1.4.563"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/MQTTnet.Extensions.ManagedClient.dll": {
+            "assemblyVersion": "4.1.4.563",
+            "fileVersion": "4.1.4.563"
+          }
+        }
+      },
+      "Newtonsoft.Json/13.0.2": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "13.0.0.0",
+            "fileVersion": "13.0.2.27524"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MQTTPublisher/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MQTTnet/4.1.4.563": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-gO9segUcKyQJcjV7w7OOdoAIkec7cUN65vEhYutbdWcj4rbtz/oL/RDvQVVbameXc6ChkjKx7/HbO+R8ejAUZQ==",
+      "path": "mqttnet/4.1.4.563",
+      "hashPath": "mqttnet.4.1.4.563.nupkg.sha512"
+    },
+    "MQTTnet.Extensions.ManagedClient/4.1.4.563": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QgrSDz12YnVUdbV5Wu1tP9sgTRUJbN4jZUsHC2Bh93tAPf+6vPaeq2WAEPoyJ7MjCadyGSW0n4QFyCjgNG8Odg==",
+      "path": "mqttnet.extensions.managedclient/4.1.4.563",
+      "hashPath": "mqttnet.extensions.managedclient.4.1.4.563.nupkg.sha512"
+    },
+    "Newtonsoft.Json/13.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-R2pZ3B0UjeyHShm9vG+Tu0EBb2lC8b0dFzV9gVn50ofHXh9Smjk6kTn7A/FdAsC8B5cKib1OnGYOXxRBz5XQDg==",
+      "path": "newtonsoft.json/13.0.2",
+      "hashPath": "newtonsoft.json.13.0.2.nupkg.sha512"
+    }
+  }
+}
