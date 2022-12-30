@@ -3,18 +3,21 @@ import { GoogleMap, Marker, MarkerClusterer } from "@react-google-maps/api";
 import styles from "../styles/Map.module.scss";
 import Navbar from "../components/Navbar";
 import axios from "axios";
-import internal from "stream";
 
 type LatLngLiteral = google.maps.LatLngLiteral;
 type MapOptions = google.maps.MapOptions;
 
-interface Device {
+export interface Device {
   deviceName: string;
   id: number;
   lastSync: number;
   latitude: number;
   longitude: number;
 }
+
+const container = "container flex flex-col items-center h-fit";
+
+const map_container = "w-full h-full rounded-3xl";
 
 export default function Map() {
   const [dataDevices, setDataDevices] = useState([]);
@@ -44,24 +47,27 @@ export default function Map() {
   return (
     <>
       <Navbar />
-      <div className={styles.container}>
-        <div className={styles.map}>
-          <GoogleMap
-            zoom={10}
-            center={center}
-            mapContainerClassName={styles.map_container}
-            options={options}
-          >
-            {dataDevices &&
-              dataDevices.map((device: Device) => {
-                return (
-                  <Marker
-                    key={device.id}
-                    position={{ lat: device.latitude, lng: device.longitude }}
-                  />
-                );
-              })}
-          </GoogleMap>
+      <div className="flex justify-center">
+        <div className={container}>
+          <h1>This is where our devices are located:</h1>
+          <div className="h-[80vh] w-full">
+            <GoogleMap
+              zoom={10}
+              center={center}
+              mapContainerClassName={map_container}
+              options={options}
+            >
+              {dataDevices &&
+                dataDevices.map((device: Device) => {
+                  return (
+                    <Marker
+                      key={device.id}
+                      position={{ lat: device.latitude, lng: device.longitude }}
+                    />
+                  );
+                })}
+            </GoogleMap>
+          </div>
         </div>
       </div>
     </>

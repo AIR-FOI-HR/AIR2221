@@ -5,6 +5,7 @@ function Statistics() {
   return (
     <>
       <Navbar />
+      <TableDevices />
     </>
   );
 }
