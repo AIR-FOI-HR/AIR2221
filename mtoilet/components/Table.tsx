@@ -40,7 +40,7 @@ export default function TableDevices() {
           </thead>
           <tbody>
             {dataDevices.map((row: Device) => (
-              <tr className={trBodyStyle}>
+              <tr key={row.id} className={trBodyStyle}>
                 <td>{row.deviceName}</td>
                 <td>{row.lastSync ? row.lastSync : "No data"}</td>
                 <td>{row.latitude}</td>
