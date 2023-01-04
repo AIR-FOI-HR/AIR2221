@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using mToiletAPI.Models.Dtos.Requests;
 using mToiletAPI.Models.Entities;
 using mToiletAPI.Services;
@@ -17,8 +18,7 @@ namespace mToiletAPI.Controllers
             _context = context;
         }
 
-
-
+        [EnableCors]
         [HttpGet]
         [Route("api/users")]
         public ActionResult<User> Get()
@@ -27,8 +27,7 @@ namespace mToiletAPI.Controllers
             return Ok(data);
         }
 
-
-
+        [EnableCors]
         [HttpGet]
         [Route("api/users/{id}")]
         public ActionResult<User> Get([FromRoute] int id)
@@ -44,8 +43,7 @@ namespace mToiletAPI.Controllers
             }
         }
 
-
-
+        [EnableCors]
         [HttpPost]
         [Route("api/users")]
         public IActionResult Create([FromBody] UserCreateRequest dto)
@@ -61,8 +59,7 @@ namespace mToiletAPI.Controllers
             }
         }
 
-
-
+        [EnableCors]
         [HttpPut]
         [Route("api/users/{id}")]
         public IActionResult Put([FromRoute] int id, [FromBody] UserCreateRequest dto)
@@ -78,8 +75,7 @@ namespace mToiletAPI.Controllers
             }
         }
 
-
-
+        [EnableCors]
         [HttpDelete]
         [Route("api/users/{id}")]
         public ActionResult<User> Delete([FromRoute] int id)

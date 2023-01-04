@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using mToiletAPI.Models.Dtos.Requests;
 using mToiletAPI.Models.Entities;
 using mToiletAPI.Services;
@@ -17,6 +18,7 @@ namespace mToiletAPI.Controllers
             _context = context;
         }
 
+        [EnableCors]
         [HttpGet]
         [Route("api/qrcodes")]
 
@@ -26,9 +28,9 @@ namespace mToiletAPI.Controllers
             return Ok(data);
         }
 
+        [EnableCors]
         [HttpGet]
         [Route("api/qrcodes/{id}")]
-
         public ActionResult<QRCode> Get([FromRoute] int id)
         {
             try
@@ -42,6 +44,7 @@ namespace mToiletAPI.Controllers
             }
         }
 
+        [EnableCors]
         [HttpPost]
         [Route("api/qrcodes")]
         public IActionResult Create([FromBody] QRCodeCreateRequest dto)
@@ -57,6 +60,7 @@ namespace mToiletAPI.Controllers
             }
         }
 
+        [EnableCors]
         [HttpPut]
         [Route("api/qrcodes/{id}")]
         public ActionResult<QRCode> Put([FromRoute] int id, [FromBody] QRCodeCreateRequest dto)
@@ -72,6 +76,7 @@ namespace mToiletAPI.Controllers
             }
         }
 
+        [EnableCors]
         [HttpDelete]
         [Route("api/qrcodes/{id}")]
         public ActionResult<QRCode> Delete([FromRoute] int id)

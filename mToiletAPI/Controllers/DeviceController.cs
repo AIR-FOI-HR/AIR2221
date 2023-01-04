@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using mToiletAPI.Models.Dtos.Requests;
 using mToiletAPI.Models.Entities;
 using mToiletAPI.Services;
@@ -17,8 +18,7 @@ namespace mToiletAPI.Controllers
             _context = context;
         }
 
-
-
+        [EnableCors]
         [HttpGet]
         [Route("api/devices")]
         public ActionResult<Device> Get()
@@ -27,8 +27,7 @@ namespace mToiletAPI.Controllers
             return Ok(data);
         }
 
-
-
+        [EnableCors]
         [HttpGet]
         [Route("api/devices/{id}")]
         public ActionResult<Device> Get([FromRoute] int id)
@@ -44,8 +43,7 @@ namespace mToiletAPI.Controllers
             }
         }
 
-
-
+        [EnableCors]
         [HttpPost]
         [Route("api/devices")]
         public IActionResult Create([FromBody] DeviceCreateRequest dto)
@@ -61,8 +59,7 @@ namespace mToiletAPI.Controllers
             }
         }
 
-
-
+        [EnableCors]
         [HttpPut]
         [Route("api/devices/{id}")]
         public ActionResult<Device> Put([FromRoute] int id, [FromBody] DeviceCreateRequest dto)
@@ -78,8 +75,7 @@ namespace mToiletAPI.Controllers
             }
         }
 
-
-
+        [EnableCors]
         [HttpDelete]
         [Route("api/devices/{id}")]
         public ActionResult<Device> Delete([FromRoute] int id)
@@ -88,7 +84,7 @@ namespace mToiletAPI.Controllers
             return Ok();
         }
 
-
+        [EnableCors]
         [HttpPut]
         [Route("api/devicesLastSync/{id}")]
         public ActionResult<Device> Put([FromRoute] int id)

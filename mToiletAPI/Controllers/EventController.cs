@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using mToiletAPI.Models.Dtos.Requests;
 using mToiletAPI.Models.Dtos.Responses;
 using mToiletAPI.Models.Entities;
@@ -18,7 +19,7 @@ namespace mToiletAPI.Controllers
             _context= context;
         }
 
-
+        [EnableCors]
         [HttpGet]
         [Route("api/events")]
         public IActionResult Get()
@@ -27,6 +28,7 @@ namespace mToiletAPI.Controllers
             return Ok(data);
         }
 
+        [EnableCors]
         [HttpGet]
         [Route("api/events/user_id/{id}")]
         public ActionResult<EventCreateRequest> GetUsers([FromRoute] int id)
@@ -42,6 +44,7 @@ namespace mToiletAPI.Controllers
             }
         }
 
+        [EnableCors]
         [HttpGet]
         [Route("api/events/device_id/{id}")]
         public ActionResult<EventCreateRequest> GetDevices([FromRoute] int id)
@@ -57,6 +60,7 @@ namespace mToiletAPI.Controllers
             }
         }
 
+        [EnableCors]
         [HttpPost]
         [Route("api/events")]
         public ActionResult<Event> Create([FromBody] EventCreateRequest dto)
