@@ -15,7 +15,9 @@ function Navbar() {
     <div className="navbar">
       <div
         className={
-          router.pathname == "/Map" ? navbar_a + activeItemClass : navbar_a
+          router.pathname == "/Map" || router.pathname == "/"
+            ? navbar_a + activeItemClass
+            : navbar_a
         }
       >
         <Link href="/Map">Map</Link>

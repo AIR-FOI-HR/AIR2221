@@ -37,3 +37,46 @@ td {
   background-origin: border-box;
   background-clip: content-box, border-box;
 }
+
+.account {
+  position: absolute;
+  top: 25px;
+  right: 50px;
+  border-radius: 30px;
+  background-color: #ffffff;
+  width: fit-content;
+  height: 55px;
+  overflow: hidden;
+
+  border: double 3.5px transparent;
+  background-image: linear-gradient(white, white),
+    linear-gradient(to right, #fb37ff, white, #18b2de);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+
+.account_dropdown {
+  position: absolute;
+  top: 85px;
+  right: 50px;
+  border-radius: 30px;
+  background-color: #ffffff;
+  width: fit-content;
+  height: 55px;
+  overflow: hidden;
+  box-sizing: border-box;
+  transition: top 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
+  border: double 3.5px transparent;
+  background-image: linear-gradient(white, white),
+    linear-gradient(to right, #fb37ff, white, #18b2de);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+
+.welcome {
+  border: double 3.5px transparent;
+  background-image: linear-gradient(white, white),
+    linear-gradient(to right, #fb37ff, white, #18b2de);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}

@@ -1,13 +1,22 @@
-import Head from "next/head";
-import Image from "next/image";
 import MapLoader from "../components/MapLoader";
-import Navbar from "../components/Navbar";
-import styles from "../styles/Navbar.module.css";
+import { ReactSession } from "react-client-session";
+import Authentication from "./Authentication";
+import { useEffect, useState } from "react";
+import SessionCheck from "../components/SessionCheck";
 
 export default function Home() {
+  const [username, setUsername] = useState("");
+
+  useEffect(() => {
+    localStorage.getItem("key");
+    ReactSession.setStoreType("localStorage");
+    setUsername(ReactSession.get("username"));
+  }, []);
+
   return (
-    <div>
-      <MapLoader />
-    </div>
+    <>
+      {SessionCheck()}
+      {username.length > 0 ? <MapLoader /> : <Authentication />}
+    </>
   );
 }

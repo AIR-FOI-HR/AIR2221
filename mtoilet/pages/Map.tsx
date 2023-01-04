@@ -1,22 +1,22 @@
-import { useState, useMemo, useCallback, useEffect, useRef } from "react";
-import { GoogleMap, Marker, MarkerClusterer } from "@react-google-maps/api";
-import styles from "../styles/Map.module.scss";
+import { useState, useMemo, useEffect, useRef } from "react";
+import { GoogleMap, Marker } from "@react-google-maps/api";
 import Navbar from "../components/Navbar";
 import axios from "axios";
+import Account from "../components/Account";
+import SessionCheck from "../components/SessionCheck";
 
 type LatLngLiteral = google.maps.LatLngLiteral;
 type MapOptions = google.maps.MapOptions;
 
 export interface Device {
-  deviceName: string;
   id: number;
+  deviceName: string;
   lastSync: number;
   latitude: number;
   longitude: number;
 }
 
 const container = "container flex flex-col items-center h-fit";
-
 const map_container = "w-full h-full rounded-3xl";
 
 export default function Map() {
@@ -46,7 +46,9 @@ export default function Map() {
 
   return (
     <>
+      {SessionCheck()}
       <Navbar />
+      <Account />
       <div className="flex justify-center">
         <div className={container}>
           <h1>This is where our devices are located:</h1>
