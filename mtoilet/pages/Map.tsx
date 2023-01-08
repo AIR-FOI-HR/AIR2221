@@ -1,17 +1,17 @@
-import { useState, useMemo, useEffect, useRef } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { GoogleMap, Marker } from "@react-google-maps/api";
 import Navbar from "../components/Navbar";
-import axios from "axios";
-import Account from "../components/Account";
-import SessionCheck from "../components/SessionCheck";
+import Account, { SessionCheck } from "../components/Account";
+import Logo from "../components/Logo";
+import { fetchData } from "../components/GetMethod";
 
 type LatLngLiteral = google.maps.LatLngLiteral;
 type MapOptions = google.maps.MapOptions;
 
 export interface Device {
-  id: number;
+  id?: number;
   deviceName: string;
-  lastSync: number;
+  lastSync?: number;
   latitude: number;
   longitude: number;
 }
@@ -21,7 +21,6 @@ const map_container = "w-full h-full rounded-3xl";
 
 export default function Map() {
   const [dataDevices, setDataDevices] = useState([]);
-  const mapRef = useRef<GoogleMap>();
   const center = useMemo<LatLngLiteral>(
     () => ({ lat: 46.308849, lng: 16.33885 }),
     []
@@ -34,19 +33,19 @@ export default function Map() {
     []
   );
 
-  const fetchData = () => {
-    return axios
-      .get("https://air2221.mobilisis.hr/api/devices")
-      .then((response) => setDataDevices(response.data));
-  };
-
   useEffect(() => {
-    fetchData();
+    async function getData() {
+      const dataDevicesTemp = await fetchData("devices");
+      setDataDevices(dataDevicesTemp);
+    }
+
+    getData();
   }, []);
 
   return (
     <>
       {SessionCheck()}
+      <Logo />
       <Navbar />
       <Account />
       <div className="flex justify-center">
@@ -64,7 +63,10 @@ export default function Map() {
                   return (
                     <Marker
                       key={device.id}
-                      position={{ lat: device.latitude, lng: device.longitude }}
+                      position={{
+                        lat: device.latitude,
+                        lng: device.longitude,
+                      }}
                     />
                   );
                 })}

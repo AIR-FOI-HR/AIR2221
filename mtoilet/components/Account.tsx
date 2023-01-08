@@ -1,14 +1,38 @@
-import React, { useState } from "react";
-import { ReactSession } from "react-client-session";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+
+export function SessionCheck() {
+  const router = useRouter();
+  const [sessionUsername, setSessionUsername] = useState<string | null>("");
+
+  const sessionCheck = () => {
+    setSessionUsername(localStorage.getItem("sessionUsername"));
+
+    if (localStorage.getItem("sessionUsername")?.length == 0)
+      router.push("/Authentication");
+    else return sessionUsername;
+  };
+
+  useEffect(() => {
+    sessionCheck();
+  }, []);
+}
 
 function Account() {
   const router = useRouter();
   const [btnAccClicked, setBtnAccClicked] = useState(false);
+  const [sessionUsername, setSessionUsername] = useState<string | null>();
 
   const logOut = () => {
+    localStorage.setItem("sessionUsername", "");
     router.push("/Authentication");
   };
+
+  useEffect(
+    () => setSessionUsername(localStorage.getItem("sessionUsername")),
+    []
+  );
+
   return (
     <>
       <div className="account flex flex-col items-center justify-center">
@@ -16,7 +40,7 @@ function Account() {
           onClick={() => setBtnAccClicked(!btnAccClicked)}
           className="mx-3 text-2xl"
         >
-          Hi, {ReactSession.get("username")}
+          Hi, {sessionUsername}
         </button>
       </div>
       {btnAccClicked && (

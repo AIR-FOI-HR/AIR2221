@@ -1,12 +1,13 @@
-import Account from "../components/Account";
+import Account, { SessionCheck } from "../components/Account";
+import Logo from "../components/Logo";
 import Navbar from "../components/Navbar";
-import SessionCheck from "../components/SessionCheck";
-import TableDevices from "../components/Table";
+import TableDevices from "../components/TableDevices";
 
 function Statistics() {
   return (
     <>
       {SessionCheck()}
+      <Logo />
       <Navbar />
       <Account />
       <TableDevices />

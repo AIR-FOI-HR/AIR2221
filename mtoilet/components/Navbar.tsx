@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { useState, useEffect } from "react";
 import React from "react";
 import { useRouter } from "next/router";
 
@@ -15,9 +14,7 @@ function Navbar() {
     <div className="navbar">
       <div
         className={
-          router.pathname == "/Map" || router.pathname == "/"
-            ? navbar_a + activeItemClass
-            : navbar_a
+          router.pathname == "/Map" ? navbar_a + activeItemClass : navbar_a
         }
       >
         <Link href="/Map">Map</Link>

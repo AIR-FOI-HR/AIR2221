@@ -1,11 +1,12 @@
-import Account from "../components/Account";
+import Account, { SessionCheck } from "../components/Account";
+import Logo from "../components/Logo";
 import Navbar from "../components/Navbar";
-import SessionCheck from "../components/SessionCheck";
 
 function QRcode() {
   return (
     <>
       {SessionCheck()}
+      <Logo />
       <Navbar />
       <Account />
     </>

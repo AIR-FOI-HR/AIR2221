@@ -1,16 +1,18 @@
-import Account from "../components/Account";
+import Account, { SessionCheck } from "../components/Account";
+import Logo from "../components/Logo";
 import Navbar from "../components/Navbar";
-import SessionCheck from "../components/SessionCheck";
-import TableDevices from "../components/Table";
+import TableEvents from "../components/TableEvents";
 
-function Statistics() {
+function Events() {
   return (
     <>
       {SessionCheck()}
+      <Logo />
       <Navbar />
       <Account />
+      <TableEvents />
     </>
   );
 }
 
-export default Statistics;
+export default Events;
