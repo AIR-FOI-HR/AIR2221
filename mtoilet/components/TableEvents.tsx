@@ -28,6 +28,9 @@ export default function TableDevices() {
   const [dataEvents, setDataEvents] = useState([]);
   const [dataDevices, setDataDevices] = useState([]);
   const [dataUsers, setDataUsers] = useState([]);
+  const [currentSessionId, setCurrentSessionId] = useState<number>(0);
+  const [isUserAdmin, setIsUserAdmin] = useState<boolean>();
+  const [hasUserEvents, setHasUserEvents] = useState<boolean>(false);
 
   const getUsername = (userId: number) => {
     var username = "Error";
@@ -65,36 +68,81 @@ export default function TableDevices() {
       setDataUsers(dataUsersTemp);
     }
 
+    if (localStorage.getItem("sessionUsername") == "admin")
+      setIsUserAdmin(true);
+    else setIsUserAdmin(false);
+
     fetchDataEvents();
     fetchDataDevices();
     fetchDataUsers();
   }, []);
 
+  useEffect(() => {
+    dataUsers.map((user: User) => {
+      if (user.username == localStorage.getItem("sessionUsername"))
+        setCurrentSessionId(user.id!);
+    });
+
+    dataEvents.map((event: Event) => {
+      if (event.userId == currentSessionId) setHasUserEvents(true);
+    });
+  }, [dataUsers]);
+
   return (
     <div className="flex justify-center">
       <div className="container">
-        <table className={tableStyle}>
-          <thead>
-            <tr className={trHeadStyle}>
-              <th>ID</th>
-              <th>Date</th>
-              <th>Time</th>
-              <th>Username</th>
-              <th>Device Name</th>
-            </tr>
-          </thead>
-          <tbody>
-            {dataEvents.map((row: Event) => (
-              <tr key={row.id} className={trBodyStyle}>
-                <td>{row.id}</td>
-                <td>{row.date ? beautifyDate(row.date) : "No data"}</td>
-                <td>{row.date ? beautifyTime(row.date) : "No data"}</td>
-                <td>{getUsername(row.userId)}</td>
-                <td>{getDeviceName(row.deviceId)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        {isUserAdmin
+          ? hasUserEvents && (
+              <table className={tableStyle}>
+                <thead>
+                  <tr className={trHeadStyle}>
+                    <th>ID</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Username</th>
+                    <th>Device Name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {dataEvents.map((row: Event) => (
+                    <tr key={row.id} className={trBodyStyle}>
+                      <td>{row.id}</td>
+                      <td>{row.date ? beautifyDate(row.date) : "No data"}</td>
+                      <td>{row.date ? beautifyTime(row.date) : "No data"}</td>
+                      <td>{getUsername(row.userId)}</td>
+                      <td>{getDeviceName(row.deviceId)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )
+          : hasUserEvents && (
+              <table className={tableStyle}>
+                <thead>
+                  <tr className={trHeadStyle}>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Device Name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {dataEvents.map(
+                    (row: Event) =>
+                      row.userId == currentSessionId && (
+                        <tr key={row.id} className={trBodyStyle}>
+                          <td>
+                            {row.date ? beautifyDate(row.date) : "No data"}
+                          </td>
+                          <td>
+                            {row.date ? beautifyTime(row.date) : "No data"}
+                          </td>
+                          <td>{getDeviceName(row.deviceId)}</td>
+                        </tr>
+                      )
+                  )}
+                </tbody>
+              </table>
+            )}
       </div>
     </div>
   );

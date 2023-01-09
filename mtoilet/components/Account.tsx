@@ -10,7 +10,6 @@ export function SessionCheck() {
 
     if (localStorage.getItem("sessionUsername")?.length == 0)
       router.push("/Authentication");
-    else return sessionUsername;
   };
 
   useEffect(() => {

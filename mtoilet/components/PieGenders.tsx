@@ -12,10 +12,10 @@ export function PieGenders() {
   ChartJS.register(ArcElement, Tooltip, Legend);
 
   const data = {
-    labels: ["Men", "Women"],
+    labels: ["Male accounts", "Female accounts"],
     datasets: [
       {
-        label: "# of Votes",
+        label: "# of Accounts",
         data: [countUserM, countUserW],
         backgroundColor: ["rgba(255, 99, 132, 0.2)", "rgba(54, 162, 235, 0.2)"],
         borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)"],

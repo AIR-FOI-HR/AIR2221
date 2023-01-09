@@ -29,6 +29,7 @@ export default function TableDevices() {
   const [editLat, setEditLat] = useState("");
   const [btnAddClicked, setBtnAddClicked] = useState<boolean>();
   const [dataAdded, setDataAdded] = useState<boolean>();
+  const [isUserAdmin, setIsUserAdmin] = useState<boolean>();
 
   async function refreshTableDevices() {
     const dataDevicesTemp = await fetchData("devices");
@@ -59,7 +60,6 @@ export default function TableDevices() {
       longitude: Number(editLng),
     };
 
-    console.log(rowIdToEdit);
     if (rowIdToEdit)
       var success = await changeData("devices", rowIdToEdit, editedData);
     if (success) {
@@ -83,6 +83,10 @@ export default function TableDevices() {
 
   useEffect(() => {
     refreshTableDevices();
+
+    if (localStorage.getItem("sessionUsername") == "admin")
+      setIsUserAdmin(true);
+    else setIsUserAdmin(false);
   }, []);
 
   const TableBody = () => {
@@ -98,27 +102,29 @@ export default function TableDevices() {
               </td>
               <td>{row.latitude}</td>
               <td>{row.longitude}</td>
-              <td className="flex flex-row gap-2">
-                <button
-                  className={buttonEditStyle}
-                  onClick={() =>
-                    onBtnEditClick(
-                      row.id,
-                      row.deviceName,
-                      row.latitude,
-                      row.longitude
-                    )
-                  }
-                >
-                  Edit
-                </button>
-                <button
-                  className={buttonDeleteStyle}
-                  onClick={() => onBtnDeleteClick(row.id)}
-                >
-                  Delete
-                </button>
-              </td>
+              {localStorage.getItem("sessionUsername") == "admin" && (
+                <td className="flex flex-row gap-2">
+                  <button
+                    className={buttonEditStyle}
+                    onClick={() =>
+                      onBtnEditClick(
+                        row.id,
+                        row.deviceName,
+                        row.latitude,
+                        row.longitude
+                      )
+                    }
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className={buttonDeleteStyle}
+                    onClick={() => onBtnDeleteClick(row.id)}
+                  >
+                    Delete
+                  </button>
+                </td>
+              )}
             </tr>
           ) : (
             <tr key={row.id} className={trBodyStyle}>
@@ -167,12 +173,14 @@ export default function TableDevices() {
       )}
       <div className="flex justify-center">
         <div className="container">
-          <button
-            className={buttonAddStyle}
-            onClick={() => setBtnAddClicked(true)}
-          >
-            +
-          </button>
+          {isUserAdmin && (
+            <button
+              className={buttonAddStyle}
+              onClick={() => setBtnAddClicked(true)}
+            >
+              +
+            </button>
+          )}
           <table className={tableStyle}>
             <thead>
               <tr className={trHeadStyle}>
@@ -181,7 +189,7 @@ export default function TableDevices() {
                 <th>Last Sync Date and Time</th>
                 <th>Latitude</th>
                 <th>Longitude</th>
-                <th></th>
+                {isUserAdmin && <th></th>}
               </tr>
             </thead>
             {TableBody()}

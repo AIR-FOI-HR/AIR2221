@@ -18,7 +18,7 @@ export function PieEventsByGender() {
     labels: ["Men", "Women"],
     datasets: [
       {
-        label: "# of Votes",
+        label: "# of Events",
         data: [countUserM, countUserW],
         backgroundColor: ["rgba(255, 99, 132, 0.2)", "rgba(54, 162, 235, 0.2)"],
         borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)"],

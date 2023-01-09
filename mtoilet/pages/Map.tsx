@@ -4,6 +4,8 @@ import Navbar from "../components/Navbar";
 import Account, { SessionCheck } from "../components/Account";
 import Logo from "../components/Logo";
 import { fetchData } from "../components/GetMethod";
+import moment from "moment";
+import { time } from "console";
 
 type LatLngLiteral = google.maps.LatLngLiteral;
 type MapOptions = google.maps.MapOptions;
@@ -25,6 +27,7 @@ export default function Map() {
     () => ({ lat: 46.308849, lng: 16.33885 }),
     []
   );
+
   const options = useMemo<MapOptions>(
     () => ({
       disableDefaultUI: true,
@@ -32,6 +35,17 @@ export default function Map() {
     }),
     []
   );
+
+  const getMarkerIcon = (lastSyncRaw: number | undefined) => {
+    if (lastSyncRaw) {
+      var start = moment(lastSyncRaw?.toString().slice(0, 10));
+      var end = moment();
+      console.log(end.diff(start, "days"));
+      if (end.diff(start, "days") > 0) {
+        return "http://maps.google.com/mapfiles/ms/icons/red-dot.png";
+      } else return "http://maps.google.com/mapfiles/ms/icons/green-dot.png";
+    }
+  };
 
   useEffect(() => {
     async function getData() {
@@ -62,6 +76,7 @@ export default function Map() {
                 dataDevices.map((device: Device) => {
                   return (
                     <Marker
+                      icon={getMarkerIcon(device.lastSync)}
                       key={device.id}
                       position={{
                         lat: device.latitude,
