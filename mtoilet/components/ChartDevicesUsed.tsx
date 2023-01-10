@@ -48,7 +48,7 @@ export function ChartDevicesUsed() {
   };
 
   const getIdsOccurences = (eventDeviceIds: number[]) => {
-    const counts = {};
+    const counts: any = {};
 
     for (const num of eventDeviceIds) {
       counts[num] = counts[num] ? counts[num] + 1 : 1;
@@ -86,7 +86,7 @@ export function ChartDevicesUsed() {
     labels,
     datasets: [
       {
-        label: "Number of Devices",
+        label: "Number of Events",
         data: labels.map(() => getOneValue()),
         backgroundColor: "rgba(255, 99, 132, 0.5)",
       },
